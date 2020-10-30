@@ -18,7 +18,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class WebCrawler {
     public final Logger logger = Logger.getLogger("WebCrawler");
-    protected ThreadPoolExecutor tpe;
     protected Map<String, ArrayList<String>> visitedURLs;
     protected String siteMap;
     protected String levelMargin = "----";
@@ -28,16 +27,6 @@ public class WebCrawler {
     protected final int INTERNAL=1, EXTERNAL=2, STATIC=3, UNKNOWN=4;
     protected int maxNodeDepth = 0;
 
-//todo - should this be a static method???
-
-/*
-factors are performance and accuracy
-
-can preface that 1st step always buy / 3rd party open source / build where build has to have certain benefits
-in this case tons of established open source web crawlers but a point of research could be benchmark testing this cralwer against the performance and accuracy of others
-
-remember to add good logging with log4j
- */
     public Map<String, ArrayList<String>> crawl(String url, String outputFile, int startingNodeDepth, int maxNodeDepth) throws Exception {
         long timeStarted = (new Date()).getTime();
 
@@ -122,7 +111,6 @@ remember to add good logging with log4j
                 adjustedTargetURL = targetURL + "/";
 
             if (targetUrlType == INTERNAL && !visitedURLs.containsKey(targetURL) && !visitedURLs.containsKey(adjustedTargetURL) && nodeDepth < maxNodeDepth)
-                //tpe.execute(new UrlVisitor(targetURL, nodeDepth+1)); //passthrough to UrlVisitor.crawl()
                 crawl(targetURL, targetUrlType, nodeDepth+1);
             else
                 addUrlToSiteMap(targetURL, targetUrlType, nodeDepth+1);
@@ -146,7 +134,6 @@ remember to add good logging with log4j
                 String url = pageText.substring(matcher.start(), matcher.end());
                 if (urls.indexOf(url) < 0) { //should avoid storing duplicate URLs since they can occur multiple times inside a page
                     urls.add(url);
-                    //System.out.println(url);
                 }
             }
             return urls;
