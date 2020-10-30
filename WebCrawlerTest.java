@@ -38,19 +38,6 @@ public class WebCrawlerTest extends BaseTest {
         assertTrue(results.size() > 0);
         assertTrue(results.containsKey("https://wiprodigital.com"));
         System.out.println("all done.");
-
-/*
-Readme.MD
-This was written in Java with the class WebCrawler and the JUnit test class WebCrawlerTest
-For now I have submitted the code and I can put the build content in later
-
-to run this - use JUnit : run or debug the method com.taryaganalytics.tests.parsers.WebCrawlerTest.testWebCrawler()
-
-unit tests
-explain threading issue
-explain robot.txt issue
-extra comments and Javadoc
- */
     }
 
 }
