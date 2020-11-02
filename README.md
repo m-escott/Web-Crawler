@@ -7,7 +7,7 @@ It creates a folder called builditTest under the system root folder and creates 
 <b>The algorithm:</b><br>
 WebCrawler.<b>crawl()</b> is the initial method that's fired and it accepts three parameters:<br>
 - a URL
-- an file name for directing ourput
+- a file name for directing ourput
 - a setting for node level depth - some web sites might contain a very cumbersome site map if taken to its completion and this setting allows one to limit the number of levels to investigate in order to get better performance in the face of overkill and decreasing marginal returns on the time spent crawling.  If one wants a complete map of the site, they can set node depth to a very high interger.
 
 The crawl() method does some housekeeping at the beginning and end by firstly initializing variables and lastly preparing the results.  At it's core, it launches into a depth first search (DFS) by firing the method  WebCrawler.<b>depthFirstRecursiveCrawl()</b>.  This contains the main logic for crawling and gathering the information from the implied graph formed by the top-level web site URL and its network of child URLs.
@@ -30,7 +30,7 @@ When verifying a page's content type, it would be more accuarate to load the pag
 While this would be accurate, it would significantly slow performance especially when encountering large static file resources such as sound and video files.  For this reason I merely check the ending of the URL against a list of common file extensions that would be used in static content eg. .jpg, .gif, avi, mp4, etc.
 
 <b>If I had more time, I would add more of the following:</b>
-- unit tests
+- finer-grained unit tests
 - explore concurrency to make this multi-threaded to improve performance via a ThreadPoolExecutor.
   There can be concurrency issues when dealing with a recursive process and/or where dependencies exist between tasks
   here the dependency is that the built-in latency rests within the process of loading and parsing pages to create lists of new pages to explore
