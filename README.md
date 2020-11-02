@@ -1,5 +1,4 @@
-This was written in Java with the class <b>WebCrawler</b> and the JUnit test class <b>WebCrawlerTest</b>
-For now I have submitted the code and I can put the build content in later.
+This was written in Java with the class <b>WebCrawler</b> and the JUnit test class <b>WebCrawlerTest</b>. For now I have submitted the code and I can put the build content in later.
 
 To run this use JUnit : run or debug the method com.taryaganalytics.tests.parsers.WebCrawlerTest.<b>testWebCrawler</b>().
 
