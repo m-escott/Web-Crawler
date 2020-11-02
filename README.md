@@ -1,7 +1,7 @@
 This was written in Java with the class <b>WebCrawler</b> and the JUnit test class <b>WebCrawlerTest</b>
 For now I have submitted the code and I can put the build content in later.
 
-To run this - use JUnit : run or debug the method com.taryaganalytics.tests.parsers.WebCrawlerTest.<b>testWebCrawler</b>().
+To run this use JUnit : run or debug the method com.taryaganalytics.tests.parsers.WebCrawlerTest.<b>testWebCrawler</b>().
 
 It creates a folder called builditTest under the system root folder and creates a file called <b>siteMapResults.txt</b> with the test results.
 
@@ -22,6 +22,12 @@ The logic used in depthFirstRecursiveCrawl() is the following:<br>
 - loop though the list of candidate URLs by classifying the URL.  If the URL meets all of the following conditions: <b>1)</b> it's an internal URL; <b>2)</b> its content will be of a non-static MIME type of text/html; <b>3)</b> it hasn't yet been visited; <b>4)</b> the recursion hasn't yet reached the maximum node depth requested ===><br><b>THEN:</b>  recurse with a call to depthFirstRecursiveCrawl() passing the child URL and the node depth<br>
 <b>OTHERWISE:</b> merely add the child URL to the site map
 
+<b>Explanation of some coding decision tradeoffs:<br></b>
+When verifying a page's content type, it would be more accuarate to load the page and then retrieve the precise content type though the following approach:<br>
+- URL urlObj = new URL(rootURL);
+- URLConnection connection = urlObj.openConnection();
+- contentType = connection.getContentType();
+While this would be accurate, it would significantly slow performance especially when encountering large static file resources such as sound and video files.  For this reason I merely check the ending of the URL against a list of common file extensions that would be used in static content eg. .jpg, .gif, avi, mp4, etc.
 
 If I had more time, I would add more of the following:
 - unit tests
