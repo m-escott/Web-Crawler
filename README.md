@@ -13,7 +13,7 @@ WebCrawler.<b>crawl()</b> is the initial method that's fired and it accepts thre
 
 The crawl() method does some housekeeping at the beginning and end by firstly initializing variables and lastly preparing the results.  At it's core, it launches into a depth first search (DFS) by firing the method  WebCrawler.<b>depthFirstRecursiveCrawl()</b>.  This contains the main logic for crawling and gathering the information from the implied graph formed by the top-level web site URL and its network of child URLs.
 
-The logic used in depthFirstRecursiveCrawl() is the following:<br>
+<b>The logic used in depthFirstRecursiveCrawl() is the following:<br></b>
 - add the passed URL to a <b>visitedURLs</b> list in order to avoid repeating visits to the same URL again
 - validate the URL with UrlValidator.isValid() from Apache Commons
 - fetch the raw web page text from the given URL.  At the root level, an assumption is made that the page's content will be text/html.  Recursion is done below to child pages, only when internal to the top-level site and only when it's determined that the content reference by the child URL will be text/html
@@ -29,7 +29,7 @@ When verifying a page's content type, it would be more accuarate to load the pag
 - contentType = connection.getContentType();
 While this would be accurate, it would significantly slow performance especially when encountering large static file resources such as sound and video files.  For this reason I merely check the ending of the URL against a list of common file extensions that would be used in static content eg. .jpg, .gif, avi, mp4, etc.
 
-If I had more time, I would add more of the following:
+<b>If I had more time, I would add more of the following:</b>
 - unit tests
 - explore concurrency to make this multi-threaded to improve performance via a ThreadPoolExecutor.
   There can be concurrency issues when dealing with a recursive process and/or where dependencies exist between tasks
