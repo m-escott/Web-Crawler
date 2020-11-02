@@ -2,7 +2,7 @@ This was written in Java with the class <b>WebCrawler</b> and the JUnit test cla
 
 To run this use JUnit : run or debug the method com.taryaganalytics.tests.parsers.WebCrawlerTest.<b>testWebCrawler</b>().
 
-It creates a folder called builditTest under the system root folder and creates a file called <b>siteMapResults.txt</b> with the test results.
+It creates a file called <b>siteMapResults.txt</b> with the test results.
 
 <b>The algorithm:</b><br>
 WebCrawler.<b>crawl()</b> is the initial method that's fired and it accepts three parameters:<br>
