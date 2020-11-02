@@ -25,7 +25,8 @@ The crawl() method does some housekeeping at the beginning and end by firstly in
 When verifying a page's content type, it would be more accuarate to load the page and then retrieve the precise content type though the following approach:<br>
 - URL urlObj = new URL(rootURL);
 - URLConnection connection = urlObj.openConnection();
-- contentType = connection.getContentType()<br>
+- contentType = connection.getContentType()
+
 While this would be accurate, it would significantly slow performance especially when encountering large static file resources such as sound and video files.  For this reason I merely check the ending of the URL against a list of common file extensions that would be used in static content eg. .jpg, .gif, avi, mp4, etc.
 
 <b>If I had more time, I would add more of the following:</b>
