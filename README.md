@@ -36,4 +36,4 @@ While this would be accurate, it would significantly slow performance especially
   here the dependency is that the built-in latency rests within the process of loading and parsing pages to create lists of new pages to explore
   with the potential added challenge of predicting/detecting MIME types for candidate pages and links
 - investigate etiquette issues in conjunction with robot.txt
-- include extra comments and Javadoc
+- generate Javadoc
