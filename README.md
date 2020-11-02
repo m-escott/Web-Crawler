@@ -22,7 +22,7 @@ The logic used in depthFirstRecursiveCrawl() is the following:<br>
 - loop though the list of candidate URLs by classifying the URL.  If the URL meets all of the following conditions: <b>1)</b> it's an internal URL; <b>2)</b> its content will be of a non-static MIME type of text/html; <b>3)</b> it hasn't yet been visited; <b>4)</b> the recursion hasn't yet reached the maximum node depth requested ===><br><b>THEN:</b>  recurse with a call to depthFirstRecursiveCrawl() passing the child URL and the node depth<br>
 <b>OTHERWISE:</b> merely add the child URL to the site map
 
-<b>Explanation of some coding decision tradeoffs:<br></b>
+<b>Explanation of a coding decision tradeoff:<br></b>
 When verifying a page's content type, it would be more accuarate to load the page and then retrieve the precise content type though the following approach:<br>
 - URL urlObj = new URL(rootURL);
 - URLConnection connection = urlObj.openConnection();
@@ -35,5 +35,5 @@ If I had more time, I would add more of the following:
   There can be concurrency issues when dealing with a recursive process and/or where dependencies exist between tasks
   here the dependency is that the built-in latency rests within the process of loading and parsing pages to create lists of new pages to explore
   with the potential added challenge of predicting/detecting MIME types for candidate pages and links
-- investigate etiquette and robot.txt
+- investigate etiquette issues in conjunction with robot.txt
 - include extra comments and Javadoc
